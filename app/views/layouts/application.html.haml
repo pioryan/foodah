@@ -38,30 +38,13 @@
           %ul.nav.nav-pills.flex-column
             %li.nav-item
               %a.nav-link.active{:href => root_path}
-                Menu
+                Menus
                 %span.sr-only (current)
             %li.nav-item
-              %a.nav-link{:href => menu_pages_path} Menu Page
+              %a.nav-link{:href => menu_pages_path} Menu Pages
             %li.nav-item
-              %a.nav-link{:href => "#"} Analytics
-            %li.nav-item
-              %a.nav-link{:href => "#"} Export
-          %ul.nav.nav-pills.flex-column
-            %li.nav-item
-              %a.nav-link{:href => "#"} Nav item
-            %li.nav-item
-              %a.nav-link{:href => "#"} Nav item again
-            %li.nav-item
-              %a.nav-link{:href => "#"} One more nav
-            %li.nav-item
-              %a.nav-link{:href => "#"} Another nav item
-          %ul.nav.nav-pills.flex-column
-            %li.nav-item
-              %a.nav-link{:href => "#"} Nav item again
-            %li.nav-item
-              %a.nav-link{:href => "#"} One more nav
-            %li.nav-item
-              %a.nav-link{:href => "#"} Another nav item
+              %a.nav-link{:href => menu_items_path} Menu Items
+
         %main.col-sm-9.ml-sm-auto.col-md-10.pt-3{:role => "main"}
           - flash.each do |key, value|
             %div{:class => "#{flash_class(key)}"}
@@ -72,30 +55,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
     %script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
-    :javascript
-      window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
-    %script{:src => "../../../../assets/js/vendor/popper.min.js"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
-
-
-
-
-
-
-
-
--#<!DOCTYPE html>
--#<html>
--#  <head>
--#    <title>Foodah</title>
--#    <%= csrf_meta_tags %>
--#
--#    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
--#    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
--#  </head>
--#
--#  <body>
--#    <%= yield %>
--#  </body>
--#</html>

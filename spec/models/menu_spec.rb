@@ -7,6 +7,8 @@ RSpec.describe Menu, type: :model do
     it "creates new records" do
       expect {
         Menu.import_file(fixture_file_upload("files/menu.csv", 'text/csv'))
+        SpawnImportWorker.drain
+        ImportWorker.drain
       }.to change(Menu, :count).by(2)
     end
 

@@ -5,12 +5,7 @@ module Importer
   module ClassMethods
     def import_file(file)
       raise "Upload File Error" unless file
-      items = []
-      CSV.foreach(file.path, headers: true) do |row|
-        items << self.new(row.to_h) if row.present?
-      end
-
-      self.import(items)
+      SpawnImportWorker.perform_async(self.to_s, file.path)
     end
 
   end

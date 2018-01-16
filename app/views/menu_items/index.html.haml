@@ -1,0 +1,39 @@
+.row
+  .col-md
+    %h2 Menu Items
+.row
+  .col-md
+    = form_tag import_menu_items_path, multipart: true do
+      = file_field_tag :file
+      = submit_tag "Import", class: "btn btn-sm btn-secondary"
+  .col-md.right
+    = form_tag(menu_items_path, method: :get) do
+      = text_field_tag :term
+      = submit_tag 'Search', class: "btn btn-sm btn-secondary"
+.row
+  .col-md
+    = will_paginate @menu_items
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th=sort_link "id", "ID"
+        %th=sort_link "menu_page_id", "Menu Page ID"
+        %th=sort_link "price"
+        %th=sort_link "high_price"
+        %th=sort_link "dish_id", "Dish ID"
+        %th=sort_link "xpos"
+        %th=sort_link "ypos"
+        %th=sort_link "created_at"
+        %th=sort_link "updated_at"
+
+    %tbody
+      - if @menu_items.present?
+        = render(partial: "menu_item", collection: @menu_items)
+      - else
+        %tr
+          = "There's no menu items to be displayed"
+
+.row
+  .col-md
+    = will_paginate @menu_items

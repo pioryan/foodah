@@ -6,6 +6,6 @@ class MenusController < ApplicationController
 
   def import
     Menu.import_file(params[:file])
-    redirect_to menus_path, notice: "Menu Data imported!"
+    redirect_to menus_path, notice: "Menu Data processing!"
   end
 end

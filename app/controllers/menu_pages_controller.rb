@@ -6,6 +6,6 @@ class MenuPagesController < ApplicationController
 
   def import
     MenuPage.import_file(params[:file])
-    redirect_to menu_pages_path, notice: "MenuPage Data imported!"
+    redirect_to menu_pages_path, notice: "MenuPage Data processing!"
   end
 end

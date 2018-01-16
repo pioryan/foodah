@@ -30,6 +30,8 @@ gem "activerecord-import"
 gem 'roo'
 gem 'will_paginate', '>= 3.1'
 gem 'activerecord-suppress_range_error'
+gem 'sidekiq'
+gem 'smarter_csv'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
