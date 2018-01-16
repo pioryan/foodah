@@ -3,13 +3,23 @@ module Error
     def self.included(clazz)
       clazz.class_eval do
         rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+        rescue_from ActiveModel::UnknownAttributeError, with: :malformed_data
+        rescue_from PG::UniqueViolation, with: :duplicate_data
       end
     end
 
     private
     def record_not_found(_e)
-      json = Helpers::Render.json(:record_not_found, _e.to_s)
-      render json: json, status: 404
+      json = Helpers::Render.json(:record_not_found, 404, _e.to_s)
+      render json: json
+    end
+
+    def malformed_data(_e)
+      redirect_to "/#{self.controller_name}", alert: _e.to_s
+    end
+
+    def duplicate_data(_e)
+      redirect_to "/#{self.controller_name}", alert: _e.to_s
     end
   end
 end

@@ -1,0 +1,44 @@
+.row
+  .col-md
+    %h2 Menu
+.row
+  .col-md
+    = form_tag import_menus_path, multipart: true do
+      = file_field_tag :file
+      = submit_tag "Import", class: "btn btn-sm btn-secondary"
+  .col-md.right
+    = form_tag(menus_path, method: :get) do
+      = text_field_tag :term
+      = submit_tag 'Search', class: "btn btn-sm btn-secondary"
+
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th=sort_link "id", "ID"
+        %th=sort_link "Name"
+        %th=sort_link "Sponsor"
+        %th=sort_link "Event"
+        %th=sort_link "Venue"
+        %th=sort_link "Place"
+        %th=sort_link "Physical Description"
+        %th=sort_link "Occasion"
+        %th=sort_link "Notes"
+        %th=sort_link "Call_number"
+        %th=sort_link "Keywords"
+        %th=sort_link "Language"
+        %th=sort_link "Date"
+        %th=sort_link "Location"
+        %th=sort_link "Location Type"
+        %th=sort_link "Currency"
+        %th=sort_link "Currency Symbol"
+        %th=sort_link "Status"
+        %th=sort_link "Page Count"
+        %th=sort_link "Dish Count"
+    %tbody
+      - if @menus.present?
+        = render(partial: "menu", collection: @menus)
+      - else
+        %tr
+          = "There's no menu to be displayed"
+

@@ -1,0 +1,102 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %link{:href => "../../../../favicon.ico", :rel => "icon"}/
+    %title Foodah
+    / Bootstrap core CSS
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    / Custom styles for this template
+    %link{:href => "dashboard.css", :rel => "stylesheet"}/
+  %body
+    %header
+      %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+        %a.navbar-brand{:href => "#"} Dashboard
+        %button.navbar-toggler.d-lg-none{"aria-controls" => "navbarsExampleDefault", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarsExampleDefault", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarsExampleDefault.collapse.navbar-collapse
+          %ul.navbar-nav.mr-auto
+            %li.nav-item.active
+              %a.nav-link{:href => "#"}
+                Home
+                %span.sr-only (current)
+            %li.nav-item
+              %a.nav-link{:href => "#"} Settings
+            %li.nav-item
+              %a.nav-link{:href => "#"} Profile
+            %li.nav-item
+              %a.nav-link{:href => "#"} Help
+          %form.form-inline.mt-2.mt-md-0
+            %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "text"}/
+            %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+    .container-fluid
+      .row
+        %nav.col-sm-3.col-md-2.d-none.d-sm-block.bg-light.sidebar
+          %ul.nav.nav-pills.flex-column
+            %li.nav-item
+              %a.nav-link.active{:href => "#"}
+                Menu
+                %span.sr-only (current)
+            %li.nav-item
+              %a.nav-link{:href => "#"} Reports
+            %li.nav-item
+              %a.nav-link{:href => "#"} Analytics
+            %li.nav-item
+              %a.nav-link{:href => "#"} Export
+          %ul.nav.nav-pills.flex-column
+            %li.nav-item
+              %a.nav-link{:href => "#"} Nav item
+            %li.nav-item
+              %a.nav-link{:href => "#"} Nav item again
+            %li.nav-item
+              %a.nav-link{:href => "#"} One more nav
+            %li.nav-item
+              %a.nav-link{:href => "#"} Another nav item
+          %ul.nav.nav-pills.flex-column
+            %li.nav-item
+              %a.nav-link{:href => "#"} Nav item again
+            %li.nav-item
+              %a.nav-link{:href => "#"} One more nav
+            %li.nav-item
+              %a.nav-link{:href => "#"} Another nav item
+        %main.col-sm-9.ml-sm-auto.col-md-10.pt-3{:role => "main"}
+          - flash.each do |key, value|
+            %div{:class => "#{flash_class(key)}"}
+              = value
+          = yield
+    /
+      Bootstrap core JavaScript
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    %script{:crossorigin => "anonymous", :integrity => "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", :src => "https://code.jquery.com/jquery-3.2.1.slim.min.js"}
+    :javascript
+      window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+    %script{:src => "../../../../assets/js/vendor/popper.min.js"}
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+
+
+
+
+
+
+
+-#<!DOCTYPE html>
+-#<html>
+-#  <head>
+-#    <title>Foodah</title>
+-#    <%= csrf_meta_tags %>
+-#
+-#    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+-#    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+-#  </head>
+-#
+-#  <body>
+-#    <%= yield %>
+-#  </body>
+-#</html>
