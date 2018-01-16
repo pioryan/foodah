@@ -1,0 +1,37 @@
+.row
+  .col-md
+    %h2 Menu Pages
+.row
+  .col-md
+    = form_tag import_menu_pages_path, multipart: true do
+      = file_field_tag :file
+      = submit_tag "Import", class: "btn btn-sm btn-secondary"
+  .col-md.right
+    = form_tag(menu_pages_path, method: :get) do
+      = text_field_tag :term
+      = submit_tag 'Search', class: "btn btn-sm btn-secondary"
+.row
+  .col-md
+    = will_paginate @menu_pages
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th=sort_link "id", "ID"
+        %th=sort_link "menu_id", "Menu ID"
+        %th=sort_link "PageNumber"
+        %th=sort_link "image_id", "Image ID"
+        %th=sort_link "Full Height"
+        %th=sort_link "Full Width"
+        %th=sort_link "uuid", "UUID"
+
+    %tbody
+      - if @menu_pages.present?
+        = render(partial: "menu_page", collection: @menu_pages)
+      - else
+        %tr
+          = "There's no menu page to be displayed"
+
+.row
+  .col-md
+    = will_paginate @menu_pages

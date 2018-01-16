@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115113633) do
+ActiveRecord::Schema.define(version: 20180116061552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "citext"
+
+  create_table "menu_pages", force: :cascade do |t|
+    t.bigint "menu_id"
+    t.bigint "page_number"
+    t.bigint "image_id"
+    t.bigint "full_height"
+    t.bigint "full_width"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string "name"

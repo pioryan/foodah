@@ -7,4 +7,16 @@ module SortHelper
     icon = column == sort_column ? icon : ""
     link_to "#{title} <span class='#{icon}'></span>".html_safe, {column: column, direction: direction}
   end
+
+  def sortable_columns
+    self.controller_name.singularize.classify.constantize.column_names
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "id"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end

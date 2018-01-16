@@ -5,6 +5,7 @@ module Error
         rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
         rescue_from ActiveModel::UnknownAttributeError, with: :malformed_data
         rescue_from PG::UniqueViolation, with: :duplicate_data
+        rescue_from StandardError, with: :standard_error
       end
     end
 
@@ -19,6 +20,10 @@ module Error
     end
 
     def duplicate_data(_e)
+      redirect_to "/#{self.controller_name}", alert: _e.to_s
+    end
+
+    def standard_error(_e)
       redirect_to "/#{self.controller_name}", alert: _e.to_s
     end
   end
