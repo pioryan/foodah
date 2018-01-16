@@ -10,7 +10,9 @@
     = form_tag(menus_path, method: :get) do
       = text_field_tag :term
       = submit_tag 'Search', class: "btn btn-sm btn-secondary"
-
+.row
+  .col-md
+    = will_paginate @menus
 .table-responsive
   %table.table.table-striped
     %thead
@@ -42,3 +44,6 @@
         %tr
           = "There's no menu to be displayed"
 
+.row
+  .col-md
+    = will_paginate @menus

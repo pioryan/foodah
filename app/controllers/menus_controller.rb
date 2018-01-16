@@ -3,8 +3,8 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu
-    @menus = @menus.search(params[:term]) if params[:term].present?
-    @menus = @menus.order("#{sort_column} #{sort_direction}")
+    @menus = @menus.search(params[:term], params[:page], sort_column, sort_direction)# if params[:term].present?
+    # @menus = @menus.order("#{sort_column} #{sort_direction}")
   end
 
   def import
