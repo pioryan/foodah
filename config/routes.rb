@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
 
-  resources :dishes
+  resources :dishes  do
+    collection do
+      post :import
+    end
+  end
+
   resources :menu_items  do
     collection do
       post :import

@@ -1,0 +1,38 @@
+.row
+  .col-md
+    %h2 Dishes
+.row
+  .col-md
+    = form_tag import_dishes_path, multipart: true do
+      = file_field_tag :file
+      = submit_tag "Import", class: "btn btn-sm btn-secondary"
+  .col-md.right
+    = form_tag(dishes_path, method: :get) do
+      = text_field_tag :term
+      = submit_tag 'Search', class: "btn btn-sm btn-secondary"
+.row
+  .col-md
+    = will_paginate @dishes
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th=sort_link "id", "ID"
+        %th=sort_link "Name"
+        %th=sort_link "Description"
+        %th=sort_link "Menus Appeared"
+        %th=sort_link "Times Appeared"
+        %th=sort_link "First Appeared"
+        %th=sort_link "Last Appeared"
+        %th=sort_link "Lowest Price"
+        %th=sort_link "Highes Price"
+    %tbody
+      - if @dishes.present?
+        = render(partial: "dish", collection: @dishes)
+      - else
+        %tr
+          = "There's no dish to be displayed"
+
+.row
+  .col-md
+    = will_paginate @dishes
