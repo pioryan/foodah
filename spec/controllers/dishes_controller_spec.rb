@@ -17,9 +17,7 @@ RSpec.describe DishesController, type: :controller do
 
       expect do
         subject
-        SpawnImportWorker.drain
-        ImportWorker.drain
-      end.to change(Dish, :count).by(5)
+      end.to change(SpawnImportWorker.jobs, :count).by(1)
 
     end
   end

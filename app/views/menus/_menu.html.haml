@@ -2,12 +2,18 @@
   %td
     = menu.id
   %td
+    %a.nav-link{:href => menu_path(id: menu.id)} Show
+  %td
     = menu.name
   %td
     = menu.sponsor
-  %td= menu.event
-  %td= menu.venue
-  %td= menu.place
+  %td
+    %a.nav-link{:href => menus_path(venue: params[:venue], term: params[:term], event: menu.event, place: params[:place])}= menu.event
+  %td
+    %a.nav-link{:href => menus_path(venue: menu.venue, term: params[:term], event: params[:event], place: params[:place])}= menu.venue
+
+  %td
+    %a.nav-link{:href => menus_path(venue: params[:venue], term: params[:term], event: params[:event], place: menu.place)}= menu.place
   %td= menu.physical_description
   %td= menu.occasion
   %td= menu.notes

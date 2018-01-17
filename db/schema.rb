@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20180116113523) do
     t.string "description"
     t.integer "menus_appeared"
     t.integer "times_appeared"
-    t.string "first_appeared"
-    t.string "last_appeared"
+    t.integer "first_appeared"
+    t.integer "last_appeared"
     t.integer "lowest_price"
     t.integer "highest_price"
     t.datetime "created_at", null: false

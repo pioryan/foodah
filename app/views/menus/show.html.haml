@@ -1,0 +1,80 @@
+.row
+  .col-md
+    %h2= "Menu# #{@menu.id}"
+.row
+  .table-responsive
+    %table.table.table-striped
+      %tr
+        %td="Name"
+        %td= @menu.name
+        %td="Sponsor"
+        %td= @menu.sponsor
+        %td="Event"
+        %td= @menu.sponsor
+        %td="Venue"
+        %td= @menu.sponsor
+      %tr
+        %td="Place"
+        %td= @menu.place
+        %td="Physical Description"
+        %td= @menu.place
+        %td="Occasion"
+        %td= @menu.occasion
+        %td="Notes"
+        %td= @menu.notes
+      %tr
+        %td="Call Number"
+        %td= @menu.call_number
+        %td="Keywords"
+        %td= @menu.keywords
+        %td="Language"
+        %td= @menu.language
+        %td="Date"
+        %td= @menu.date
+      %tr
+        %td="Location"
+        %td= @menu.location
+        %td="Location Type"
+        %td= @menu.location_type
+        %td="Currency"
+        %td= @menu.currency
+        %td="Currency Symbol"
+        %td= @menu.currency_symbol
+      %tr
+        %td="Status"
+        %td= @menu.status
+        %td="Page Count"
+        %td= @menu.page_count
+        %td="Dish Count"
+        %td= @menu.dish_count
+.row
+  %h3 Dishes
+- @menu.menu_pages.each do |page|
+  .row
+    .container-fluid.border
+      .row
+        %h4
+          = "Menu Page #{page.page_number}"
+      - page.dishes.each_slice(3)  do |slice|
+        .row
+          - slice.each do |dish|
+            .col
+              .card{style: "width: 18rem;"}
+                .card-body
+                  %h5.card-title
+                    = dish.name
+                  .card-text
+                    = dish.description
+                  %ul.list-group.list-group-flush
+                    %li.list-group-item
+                      = "Menus Appeared: #{dish.menus_appeared}"
+                    %li.list-group-item
+                      = "Times Appeared: #{dish.times_appeared}"
+                    %li.list-group-item
+                      = "First Appeared: #{dish.first_appeared}"
+                    %li.list-group-item
+                      = "Last Appeared: #{dish.last_appeared}"
+                    %li.list-group-item
+                      = "Lowest Price: #{dish.lowest_price}"
+                    %li.list-group-item
+                      = "Highest Price: #{dish.highest_price}"

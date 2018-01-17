@@ -5,8 +5,8 @@ class CreateDishes < ActiveRecord::Migration[5.1]
       t.string :description
       t.integer :menus_appeared
       t.integer :times_appeared
-      t.string :first_appeared
-      t.string :last_appeared
+      t.integer :first_appeared
+      t.integer :last_appeared
       t.integer :lowest_price
       t.integer :highest_price
       t.timestamps

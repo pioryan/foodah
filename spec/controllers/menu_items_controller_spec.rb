@@ -19,9 +19,7 @@ RSpec.describe MenuItemsController, type: :controller do
 
       expect do
         subject
-        SpawnImportWorker.drain
-        ImportWorker.drain
-      end.to change(MenuItem, :count).by(4)
+      end.to change(SpawnImportWorker.jobs, :count).by(1)
 
     end
   end

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :menus  do
     collection do
       post :import
+      post :export
     end
   end
 
