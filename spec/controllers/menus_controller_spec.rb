@@ -7,10 +7,10 @@ RSpec.describe MenusController, type: :controller do
       @file = fixture_file_upload('files/menu.csv', 'text/csv')
     end
 
-    subject { post :import, :params => {file: @file} }
+    subject { post :import, params: { file: @file } }
 
     it "accepts file" do
-      expect(subject).to  redirect_to(menus_url)
+      expect(subject).to redirect_to(menus_url)
     end
 
     it "creates new menu" do

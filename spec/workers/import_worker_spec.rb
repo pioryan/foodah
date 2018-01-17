@@ -9,7 +9,7 @@ RSpec.describe ImportWorker, type: :worker do
     end
   end
 
-  
+
 
   describe "Dish Import" do
     it "creates new dish records" do
